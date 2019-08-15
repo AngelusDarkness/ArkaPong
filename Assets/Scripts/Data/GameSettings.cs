@@ -8,3 +8,5 @@ public class GameSettings : ScriptableObject {
     public int matchTime = 30;
     public int scoreBase = 10;    
 }
+
+

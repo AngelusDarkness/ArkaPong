@@ -12,7 +12,10 @@ namespace Events{
 
     public class StartTimerEvent : GameEvent { }
     public class GameStartEvent : GameEvent { }
-    public class GameOverEvent : GameEvent { }
+
+    public class GameOverEvent : GameEvent {
+        public PlayerIds winnerId = PlayerIds.None;
+    }
 }
 
 

@@ -1,26 +1,29 @@
 ﻿using System;
+using Events;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerScore", menuName = "ArkaPong/Create PlayerData", order = 0)]
 public class ScoreData : ScriptableObject, ISerializationCallbackReceiver
 {
-    //Public Members
+    //Private Members
+    [SerializeField] private GameSettings gameSettings;
+    [SerializeField] private PlayerIds _playerId = PlayerIds.None;
     [SerializeField] private int _playerScore = 0;
     [NonSerialized] private int _runtimePlayerScore;
-    
-    [SerializeField] private GameSettings gameSettings;
+
+    public PlayerIds PlayerID => _playerId;
     
     //Public Methods
     public void UpdateScore() {
         _runtimePlayerScore += gameSettings.scoreBase;
-        
-        Debug.Log($"{name} Score Updated To: {_runtimePlayerScore}");
-        
     }
+    
 
+    
     public int GetScore() {
         return _runtimePlayerScore;
     }
+
     
     //Unity Methods
     public void OnAfterDeserialize() {

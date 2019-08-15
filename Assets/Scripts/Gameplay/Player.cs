@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 
 
     private void OnCollisionEnter(Collision other) {
-        if (!other.collider.CompareTag("Ball")) return;
+        if (!other.collider.CompareTag("Ball") || !_canMove) return;
         
         var ball = other.collider;
         var rb = ball.GetComponent<Rigidbody>();        

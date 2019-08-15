@@ -8,7 +8,9 @@ public class DeadZone : MonoBehaviour {
 	[SerializeField] private PlayerIds _playerId;
 	[SerializeField] private ScoreData _scoreData;
 	
-	private readonly ScoreEvent _scoreEvent = new ScoreEvent();
+	private  ScoreEvent _scoreEvent = new ScoreEvent();
+
+	private GameController _gameController;
 	
 	private void Start() {
 		_scoreEvent.playerPosition = _player.position;
@@ -18,9 +20,11 @@ public class DeadZone : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider col)
 	{
-		if(!col.CompareTag("Ball")) return;		
+		if(!col.CompareTag("Ball")) return;
+
 		
 		_scoreData.UpdateScore();
-		EventController.TriggerEvent(_scoreEvent);			
+		
+		EventController.TriggerEvent(_scoreEvent);
 	}
 }
