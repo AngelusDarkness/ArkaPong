@@ -5,6 +5,7 @@ using Events;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     [Header("Ball Settings")]
@@ -43,9 +44,10 @@ public class GameController : MonoBehaviour {
             yield return _oneSecond;
             timer--;                
         }
-        
         StartCoroutine(UpdateGamePlayTime());
         EventController.TriggerEvent(_gameStartEvent);
+        
+        
     }
     
     private IEnumerator UpdateGamePlayTime() {
@@ -60,8 +62,16 @@ public class GameController : MonoBehaviour {
 
     private void GameOver() {
         var winner = _playersScore.OrderBy(score => score.GetScore()).First();
+        
+        PlayerPrefs.SetInt("PlayerID", (int)winner.PlayerID);
+        PlayerPrefs.SetInt("Score", winner.GetScore());
+        
+        PlayerPrefs.Save();
+        
         _gameOverEvent.winnerId = winner.PlayerID;
-        EventController.TriggerEvent(_gameOverEvent);        
+        EventController.TriggerEvent(_gameOverEvent);
+
+        
     }
 
     //Events

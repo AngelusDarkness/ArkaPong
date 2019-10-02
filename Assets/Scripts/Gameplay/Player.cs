@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private KeyCode _rightKey;
 
     [Header("Movement Range")]
+   
     [SerializeField] private float _minPosOffset = 0;
     [SerializeField] private float _maxPosOffset = 0;
 
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour {
     private void OnDisable() {
         EventController.RemoveListener<GameStartEvent>(OnGameStartEvent);
         EventController.RemoveListener<GameOverEvent>(OnGameOverEvent);
+        
+        
     }
 
     // Update is called once per frame

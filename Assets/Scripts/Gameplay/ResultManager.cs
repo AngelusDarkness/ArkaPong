@@ -16,7 +16,8 @@ public class ResultManager : MonoBehaviour {
 		else
 			resultTitle.text = "Realmente Fracasado of Life!";
 		
-		score.text = Data.SCORE.ToString();	
+		score.text = Data.SCORE.ToString();
+		
 	}
 	
 	public void ResetGame()

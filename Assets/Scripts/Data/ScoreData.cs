@@ -13,7 +13,7 @@ public class ScoreData : ScriptableObject, ISerializationCallbackReceiver
 
     public PlayerIds PlayerID => _playerId;
     
-    //Public Methods
+    //Public Methods 
     public void UpdateScore() {
         _runtimePlayerScore += gameSettings.scoreBase;
     }
